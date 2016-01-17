@@ -1,5 +1,6 @@
 {
   "boss": true,
+  "asi": true,
   "browser": true,
   "curly": true,
   "devel": true,
