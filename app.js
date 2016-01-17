@@ -11,7 +11,8 @@ createInitialPopulation()
 
 console.log('=== inital population ===')
 _.each(parents, function(parent) {
-  console.log(parent.genotype)
+  // parent.getFitness()
+  console.log(parent.genotype, parent.getFitness())
 })
 
 _.times(maxGenerations, function() {
@@ -20,7 +21,7 @@ _.times(maxGenerations, function() {
 
 function createInitialPopulation() {
  _.times(populationSize, function() {
-  var parent = new DNA(targetString.length)
+  var parent = new DNA(targetString)
   parent.createRandomGenotype()
   parents.push(parent)
  })
