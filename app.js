@@ -1,6 +1,7 @@
 var DNA = require('./dna')
-var _ = require('lodash')
+var matingPool = require('./mating-pool')
 
+var _ = require('lodash')
 var populationSize = 10
 var parents = []
 var children = []
@@ -10,10 +11,9 @@ var targetString = 'dingus amongus'
 createInitialPopulation()
 
 console.log('=== inital population ===')
-_.each(parents, function(parent) {
-  // parent.getFitness()
-  console.log(parent.genotype, parent.getFitness())
-})
+parents = matingPool.sortByFitness(parents)
+
+console.log(_.pluck(parents, 'fitness'))
 
 _.times(maxGenerations, function() {
 

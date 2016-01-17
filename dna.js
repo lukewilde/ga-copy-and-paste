@@ -5,6 +5,7 @@ function DNA(targetString) {
   this.targetString = targetString
   this.possibleCharacters = 'qwertyuiopasdfghjklzxcvbnm '
   this.genotype = ''
+  this.fitness = 0
 }
 
 DNA.prototype.getFitness = function() {
@@ -24,6 +25,8 @@ DNA.prototype.createRandomGenotype = function() {
   _.times(this.targetString.length, function() {
     this.genotype += this.getRandomCharacter()
   }, this)
+
+  this.fitness = this.getFitness()
 }
 
 DNA.prototype.getRandomCharacter = function() {
