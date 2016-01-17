@@ -11,9 +11,10 @@ var targetString = 'dingus amongus'
 createInitialPopulation()
 
 console.log('=== inital population ===')
-parents = matingPool.sortByFitness(parents)
+matingPool.setNormalisedFitness(parents)
 
 console.log(_.pluck(parents, 'fitness'))
+console.log(_.pluck(parents, 'normalisedFitness'))
 
 _.times(maxGenerations, function() {
 
