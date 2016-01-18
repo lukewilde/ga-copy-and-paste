@@ -3,49 +3,54 @@ var populationTools = require('./population-tools')
 var matingBucket = require('./mating-bucket')
 
 var _ = require('lodash')
-var populationSize = 10
+var populationSize = 100
 var parents = []
-var children = []
 var partners = []
-var maxGenerations = 100
+var maxGenerations = 100000
 var targetString = 'dingus amongus'
+var populationCount = 0;
+var masterRace = false;
 
 createInitialPopulation()
 
-console.log('=== inital population ===')
-populationTools.setNormalisedFitness(parents)
+while(!masterRace) {
 
-_.each(parents, function(parent) {
-  console.log(parent.fitness, parent.normalisedFitness)
-})
+  populationCount ++
 
-matingBucket.populate(parents)
+  // if (populationCount > 6) {
+  //   return
+  // }
 
-children = []
-partners = []
+  populationTools.setNormalisedFitness(parents)
 
-_.times(populationSize, function() {
-  var a = matingBucket.getMate();
-  var b = matingBucket.getMate(a);
+  var fittest = populationTools.sortByFitness(parents).pop();
 
-  partners.push([a, b])
-})
+  console.log('highest fitness for generation %s: %s (%s)', populationCount, fittest.fitness, fittest.genotype)
 
-children = _.map(partners, function(couple) {
-  return couple[0].coinFlipMate(couple[1])
-})
+  if (fittest.genotype === targetString) {
+    console.log('')
+    console.log('we bleddy done it!')
+    console.log(fittest)
+    masterRace = true
+  }
 
-console.log('=== second generation ===')
+  matingBucket.populate(parents)
 
-populationTools.setNormalisedFitness(children)
+  partners = []
 
-_.each(children, function(child) {
-  console.log(child.fitness, child.normalisedFitness)
-})
+  _.times(populationSize, function() {
+    var a = matingBucket.getMate();
+    var b = matingBucket.getMate(a);
 
-_.times(maxGenerations, function() {
+    partners.push([a, b])
+  })
 
-})
+  // console.log(partners)
+
+  parents = _.map(partners, function(couple) {
+    return couple[0].coinFlipMate(couple[1])
+  })
+}
 
 function createInitialPopulation() {
  _.times(populationSize, function() {

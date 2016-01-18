@@ -40,14 +40,17 @@ DNA.prototype.coinFlipMate = function(mate) {
 
   _.each(this.genotype, function(gene, index) {
 
-    var takeGeneFromMate = Math.random() < 0.5
+    var takeGeneFromMate = Math.random() > (0.5 - this.mutationRate / 2)
+    var shouldMutateGene = Math.random() > 1 - this.mutationRate
 
-    if (takeGeneFromMate) {
+    if (shouldMutateGene) {
+      gene = this.getRandomCharacter()
+    } else if (takeGeneFromMate) {
       gene = mate.genotype[index]
     }
 
     child.genotype += gene
-  })
+  }, this)
 
   child.fitness = child.getFitness()
 
