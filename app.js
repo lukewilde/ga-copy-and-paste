@@ -3,7 +3,7 @@ var populationTools = require('./population-tools')
 var matingBucket = require('./mating-bucket')
 
 var _ = require('lodash')
-var populationSize = 500
+var populationSize = 200
 var parents = []
 var partners = []
 var targetString = 'this should take a bit longer'
