@@ -3,10 +3,10 @@ var _ = require('lodash')
 function DNA(targetString) {
 
   this.targetString = targetString
-  this.possibleCharacters = 'qwertyuiopasdfghjklzxcvbnm '
+  this.possibleCharacters = 'qwertyuiopasdfghjklzxcvbnm .,'
   this.genotype = ''
   this.fitness = 0
-  this.mutationRate = 0.01
+  this.mutationRate = 0.001
 }
 
 DNA.prototype.getFitness = function() {
