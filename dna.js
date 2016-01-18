@@ -6,6 +6,7 @@ function DNA(targetString) {
   this.possibleCharacters = 'qwertyuiopasdfghjklzxcvbnm '
   this.genotype = ''
   this.fitness = 0
+  this.mutationRate = 0.1
 }
 
 DNA.prototype.getFitness = function() {

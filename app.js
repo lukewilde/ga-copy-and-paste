@@ -3,11 +3,10 @@ var populationTools = require('./population-tools')
 var matingBucket = require('./mating-bucket')
 
 var _ = require('lodash')
-var populationSize = 100
+var populationSize = 500
 var parents = []
 var partners = []
-var maxGenerations = 100000
-var targetString = 'dingus amongus'
+var targetString = 'this should take a bit longer'
 var populationCount = 0;
 var masterRace = false;
 
@@ -16,10 +15,6 @@ createInitialPopulation()
 while(!masterRace) {
 
   populationCount ++
-
-  // if (populationCount > 6) {
-  //   return
-  // }
 
   populationTools.setNormalisedFitness(parents)
 
@@ -57,5 +52,5 @@ function createInitialPopulation() {
   var parent = new DNA(targetString)
   parent.createRandomGenotype()
   parents.push(parent)
- })
+ }, this)
 }
