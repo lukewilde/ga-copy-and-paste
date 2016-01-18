@@ -18,7 +18,7 @@ DNA.prototype.getFitness = function() {
     }
   }, this)
 
-  return score * 100 / this.targetString.length;
+  return Math.round(score * 100 / this.targetString.length)
 }
 
 DNA.prototype.createRandomGenotype = function() {
@@ -26,12 +26,32 @@ DNA.prototype.createRandomGenotype = function() {
     this.genotype += this.getRandomCharacter()
   }, this)
 
-  this.fitness = Math.round(this.getFitness())
+  this.fitness = this.getFitness()
 }
 
 DNA.prototype.getRandomCharacter = function() {
   var randomIndex = _.random(0, this.possibleCharacters.length - 1)
   return this.possibleCharacters[randomIndex]
+}
+
+DNA.prototype.coinFlipMate = function(mate) {
+
+  var child = new DNA(this.targetString)
+
+  _.each(this.genotype, function(gene, index) {
+
+    var takeGeneFromMate = Math.random() < 0.5
+
+    if (takeGeneFromMate) {
+      gene = mate.genotype[index]
+    }
+
+    child.genotype += gene
+  })
+
+  child.fitness = child.getFitness()
+
+  return child
 }
 
 

@@ -28,10 +28,20 @@ _.times(populationSize, function() {
   var a = matingBucket.getMate();
   var b = matingBucket.getMate(a);
 
-  partners.push([a.genotype, b.genotype])
+  partners.push([a, b])
 })
 
-console.log(partners)
+children = _.map(partners, function(couple) {
+  return couple[0].coinFlipMate(couple[1])
+})
+
+console.log('=== second generation ===')
+
+populationTools.setNormalisedFitness(children)
+
+_.each(children, function(child) {
+  console.log(child.fitness, child.normalisedFitness)
+})
 
 _.times(maxGenerations, function() {
 
