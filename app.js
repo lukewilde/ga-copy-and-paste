@@ -13,8 +13,11 @@ createInitialPopulation()
 console.log('=== inital population ===')
 matingPool.setNormalisedFitness(parents)
 
-console.log(_.pluck(parents, 'fitness'))
-console.log(_.pluck(parents, 'normalisedFitness'))
+_.each(parents, function(parent) {
+  console.log(parent.fitness, parent.normalisedFitness)
+})
+
+console.log(_.countBy(matingPool.makeBucket(parents)))
 
 _.times(maxGenerations, function() {
 

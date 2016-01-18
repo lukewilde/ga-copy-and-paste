@@ -26,7 +26,7 @@ DNA.prototype.createRandomGenotype = function() {
     this.genotype += this.getRandomCharacter()
   }, this)
 
-  this.fitness = this.getFitness()
+  this.fitness = Math.round(this.getFitness())
 }
 
 DNA.prototype.getRandomCharacter = function() {
