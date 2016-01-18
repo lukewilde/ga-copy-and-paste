@@ -37,6 +37,10 @@ while(!masterRace) {
     var a = matingBucket.getMate();
     var b = matingBucket.getMate(a);
 
+    if (!a || !b) {
+      console.log(a, b)
+    }
+
     partners.push([a, b])
   })
 
