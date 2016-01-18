@@ -6,7 +6,7 @@ var _ = require('lodash')
 var populationSize = 200
 var parents = []
 var partners = []
-var targetString = 'this should take a bit longer'
+var targetString = 'lorem ipsum dolor sit amet, consectetur adipiscing elit. sed viverra eros lectus, consectetur lacinia nulla tempus nec. aliquam id bibendum tellus. fusce at ante vitae mi suscipit egestas sit amet nec ex. aenean malesuada iaculis scelerisque. suspendisse vestibulum mi quis cursus pharetra. vivamus augue urna, interdum sed imperdiet in, posuere suscipit nisi. sed justo mi, maximus ac interdum eget, laoreet vitae ex. donec nec ex pellentesque, pellentesque augue at, ornare ligula. sed imperdiet enim vitae diam eleifend vehicula. proin bibendum, purus a facilisis elementum, neque tortor tempus nibh, vitae semper justo leo a justo. aliquam auctor arcu quis ante condimentum, vel varius magna feugiat.'
 var populationCount = 0;
 var masterRace = false;
 
